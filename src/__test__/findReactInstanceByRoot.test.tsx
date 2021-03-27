@@ -1,12 +1,25 @@
 import { render } from "@testing-library/react";
-
+import React from "react";
+import App from "./mockComponent/App";
+import { findReactInstanceByRoot } from "../findReactInstanceByRoot";
+import { HostRoot } from "../types";
 describe("testing find react instance root", () => {
-  console.log(render);
-  test("should return react node", () => {
-    expect(true).toEqual(true);
+  beforeEach(() => {
+    render(<App />);
   });
 
-  test("should return react node", () => {
-    expect(true).toEqual(true);
+  test("should return Fiber node from root node", () => {
+    const rootDom = document.querySelector("body");
+    const rootInstance = findReactInstanceByRoot(rootDom);
+    expect(rootInstance.constructor.name).toEqual("FiberNode");
+  });
+
+  test("should return react root container component from root node", () => {
+    const rootDom = document.querySelector("body");
+    const rootInstance = findReactInstanceByRoot(rootDom);
+    expect(
+      "_reactRootContainer" in rootInstance.stateNode.containerInfo
+    ).toEqual(true);
+    expect(rootInstance.tag).toEqual(HostRoot);
   });
 });

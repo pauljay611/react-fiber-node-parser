@@ -3,6 +3,7 @@ import React from "react";
 import App from "./mockComponent/App";
 import { findReactInstanceByRoot } from "../findReactInstanceByRoot";
 import { HostRoot } from "../types";
+
 describe("testing find react instance root", () => {
   beforeEach(() => {
     render(<App />);

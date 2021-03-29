@@ -155,5 +155,5 @@ export interface SimplifiedFiberNode {
   state: any;
   props: any;
   index: number;
-  domNode: Element;
+  domNode: string;
 }

@@ -148,13 +148,12 @@ export const OffscreenComponent = 22;
 export const LegacyHiddenComponent = 23;
 export const CacheComponent = 24;
 
-export interface SimplifyFiberNode {
+export interface SimplifiedFiberNode {
   type: WorkTag;
   displayName: string;
-  children: SimplifyFiberNode[];
+  children: SimplifiedFiberNode[];
   state: any;
   props: any;
-  context: any;
   index: number;
   domNode: Element;
 }

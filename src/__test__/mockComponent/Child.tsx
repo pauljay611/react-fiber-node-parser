@@ -1,9 +1,6 @@
 import React, { useCallback, useState } from "react";
-import Child from "./Child";
 
-const mockComponents = new Array(10).fill(0);
-
-const App: React.FC = () => {
+const Child: React.FC = () => {
   const [test, setTest] = useState(0);
   const [test2, setTest2] = useState(1);
 
@@ -13,16 +10,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="parent">
-      {mockComponents.map((_, index) => (
-        <Child key={index} />
-      ))}
-      <span>
-        I'm parent {test} {test2}
-      </span>
+    <div className="child">
+      I'm child {test} {test2}
       <button onClick={btnClick}></button>
     </div>
   );
 };
 
-export default App;
+export default Child;

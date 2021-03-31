@@ -22,6 +22,7 @@ memoizedProps 比較單純，它內容會有兩種物件
 
 - 準備傳入的父層 props
 - 已經傳入的子層 props
+- List render，會用 Fragment 包住
 
 memoizedState 為單向 linkedlist，延續接著每個 state，可以參考 https://github.com/7kms/react-illustration-series/blob/v17.0.1/docs/algorithm/linkedlist.md
 

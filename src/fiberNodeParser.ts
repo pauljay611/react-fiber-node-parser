@@ -1,39 +1,29 @@
 import { Fiber, SimplifiedFiberNode } from "./types";
+import {
+  getDisplayNameByType,
+  getAllChildrenBySiblings,
+  getAllStateByMemoizedStateList,
+  getDomNode,
+} from "./utils";
 
 export function simplifyFiberNode(currentNode: Fiber): SimplifiedFiberNode {
-  console.log(currentNode.memoizedState);
+  const displayName = getDisplayNameByType(currentNode.type);
+  const children = getAllChildrenBySiblings(currentNode.child).map((node) =>
+    simplifyFiberNode(node)
+  );
+  const state = getAllStateByMemoizedStateList(currentNode.memoizedState);
+  const domNode = getDomNode(currentNode.stateNode);
+
   const simplifiedNode: SimplifiedFiberNode = {
     type: currentNode.tag,
-    displayName: currentNode.type ? currentNode.type.name : "Unnamed",
-    children: getAllChildrenFromSiblings(currentNode.child).map((node) =>
-      simplifyFiberNode(node)
-    ),
-    state:
-      currentNode.memoizedState &&
-      currentNode.memoizedState.constructor.name !== "element"
-        ? currentNode.memoizedState
-        : null,
-    props:
-      currentNode.memoizedProps &&
-      currentNode.memoizedProps.constructor.name !== "element"
-        ? currentNode.memoizedProps
-        : null,
+    displayName,
+    children,
+    state,
+    props: currentNode.memoizedProps,
     index: currentNode.index,
-    domNode: "",
+    domNode,
   };
   return simplifiedNode;
-}
-
-function getAllChildrenFromSiblings(node: Fiber): Fiber[] {
-  const children: Fiber[] = [];
-  let currentNode = node;
-
-  while (currentNode) {
-    children.push(currentNode);
-    currentNode = currentNode.sibling;
-  }
-
-  return children;
 }
 
 export default simplifyFiberNode;

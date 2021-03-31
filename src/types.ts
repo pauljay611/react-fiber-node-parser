@@ -157,3 +157,11 @@ export interface SimplifiedFiberNode {
   index: number;
   domNode: string;
 }
+
+export type MemoizedState = {
+  memoizedState: any;
+  baseState: any;
+  baseQueue: any;
+  queue: any;
+  next: MemoizedState | null;
+};

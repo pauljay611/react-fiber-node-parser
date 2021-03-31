@@ -15,7 +15,7 @@ describe("testing find react instance root", () => {
     expect(rootInstance.constructor.name).toEqual("FiberNode");
   });
 
-  test("should return react root container component from root node", () => {
+  test("should return correct react root container component from root node", () => {
     const rootDom = document.querySelector("body");
     const rootInstance = findReactInstanceByRoot(rootDom);
     expect(

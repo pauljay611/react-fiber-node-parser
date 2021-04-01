@@ -20,7 +20,7 @@ const App: React.FC = () => {
       <span>
         I'm parent {test} {test2}
       </span>
-      <button onClick={btnClick}></button>
+      <button data-testid="click" onClick={btnClick}></button>
     </div>
   );
 };

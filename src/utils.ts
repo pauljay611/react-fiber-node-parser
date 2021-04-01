@@ -1,5 +1,12 @@
 import { Fiber, MemoizedState } from "./types";
 
+export function getDisplayNameByType(nodeType: any) {
+  if (!nodeType || !nodeType.name) return "Unnamed component";
+  if (nodeType.name) return nodeType.name;
+  if (typeof nodeType === "object") return nodeType.$$typeof;
+  return nodeType;
+}
+
 export function getAllChildrenBySiblings(node: Fiber): Fiber[] {
   if (node.memoizedState && !("element" in node.memoizedState)) return [];
   const children: Fiber[] = [];
@@ -18,20 +25,14 @@ export function getAllStateByMemoizedStateList(memoizedState: MemoizedState) {
   const state = [];
 
   while (currentState) {
-    state.push(currentState.memoizedState);
+    if (currentState.baseState !== null && currentState.baseState !== undefined)
+      state.push(currentState.baseState);
     currentState = currentState.next;
   }
   return state;
 }
 
-export function getDisplayNameByType(nodeType: any) {
-  if (!nodeType || !nodeType.name) return "Unnamed component";
-  if (nodeType.name) return nodeType.name;
-  if (typeof nodeType === "object") return nodeType.$$typeof;
-  return nodeType;
-}
-
-export function getDomNode(stateNode: any) {
-  if (stateNode || stateNode.containerInfo) return null;
-  return stateNode.containerInfo;
+export function getDomNodeByStateNode(stateNode: any) {
+  if (!stateNode) return null;
+  return stateNode;
 }

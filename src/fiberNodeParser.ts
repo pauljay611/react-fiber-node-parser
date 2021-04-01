@@ -3,7 +3,7 @@ import {
   getDisplayNameByType,
   getAllChildrenBySiblings,
   getAllStateByMemoizedStateList,
-  getDomNode,
+  getDomNodeByStateNode,
 } from "./utils";
 
 export function simplifyFiberNode(currentNode: Fiber): SimplifiedFiberNode {
@@ -12,7 +12,7 @@ export function simplifyFiberNode(currentNode: Fiber): SimplifiedFiberNode {
     simplifyFiberNode(node)
   );
   const state = getAllStateByMemoizedStateList(currentNode.memoizedState);
-  const domNode = getDomNode(currentNode.stateNode);
+  const domNode = getDomNodeByStateNode(currentNode.stateNode);
 
   const simplifiedNode: SimplifiedFiberNode = {
     type: currentNode.tag,

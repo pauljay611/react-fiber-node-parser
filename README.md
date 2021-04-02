@@ -28,8 +28,16 @@ memoizedState 為單向 linkedlist，延續接著每個 state，可以參考 htt
 
 - memoizedState: 當前的 state
 - next: 接下來的 state
+- baseState: 當前的 state
+- queue: 包含準備要更新的所有 state
 
-所以這就是為何不能將條件式擺在 useState() 前面，會造成 state 錯位
+為何不能將條件式擺在 useState() 前面: 會造成 state 錯位
 
 https://www.mdeditor.tw/pl/pAOm/zh-tw
 https://overreacted.io/zh-hans/why-do-hooks-rely-on-call-order/
+
+mountWorkInProgressHook => 負責連接所有 hook 包含 state
+
+queue 內會包 update 的 linkedList 假如 update1(prev=>prev+1) update2(prev=>prev+1) update3(prev=>prev+1)
+他會變成 => update1 -> update2 -> update3
+https://www.mdeditor.tw/pl/pXRJ/zh-tw

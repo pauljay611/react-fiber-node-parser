@@ -36,7 +36,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "demo": "yarn workspace demo-app start",
+    "demo": "yarn test && yarn build && cp index.js examples/demo-app/public &&yarn workspace demo-app start",
     "test": "jest"
   }
 }

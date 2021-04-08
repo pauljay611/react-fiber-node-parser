@@ -4,7 +4,11 @@ import { Fiber } from "./types";
 export function findReactInstanceByRoot(rootNode: Element) {
   function searchNode(curNode: Element): Fiber | undefined {
     for (const [key, value] of Object.entries(curNode)) {
-      if (key.startsWith("__reactInternalInstance$")) return value;
+      if (
+        key.startsWith("__reactInternalInstance$") ||
+        key.startsWith("__reactFiber$")
+      )
+        return value;
       if (key === "_reactRootContainer") return value._internalRoot.current;
     }
     const children = Array.from(curNode.children);

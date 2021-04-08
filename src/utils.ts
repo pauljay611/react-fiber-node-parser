@@ -8,6 +8,7 @@ export function getDisplayNameByType(nodeType: any) {
 }
 
 export function getAllChildrenBySiblings(node: Fiber): Fiber[] {
+  if (!node) return [];
   if (node.memoizedState && !("element" in node.memoizedState)) return [];
   const children: Fiber[] = [];
   let currentNode = node;

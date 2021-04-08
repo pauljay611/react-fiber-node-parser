@@ -1,12 +1,14 @@
 {
   "name": "react-nip",
   "version": "1.0.0",
+  "description": "A react fiber node instance parser from DOM node to stateful component node",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "workspaces": [
     "examples/demo-app"
   ],
+  "author":"Paul Yang <pauljay611@gmail.com>",
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.12.13",

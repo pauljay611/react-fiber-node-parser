@@ -1,6 +1,6 @@
 {
   "name": "react-nip",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A react fiber node instance parser from DOM node to stateful component node",
   "main": "dist/index.js",
   "types": "types/types.d.ts",
@@ -37,7 +37,7 @@
   },
   "scripts": {
     "dev": "webpack --config webpack.dev.js",
-    "demo": "yarn test && yarn dev && cp index.js examples/demo-app/public && cd examples/demo-app && yarn start",
+    "demo": "yarn test && yarn dev && cp bundle.js examples/demo-app/public && cd examples/demo-app && yarn start",
     "test": "jest",
     "build": "rm -rf dist && webpack --config webpack.prod.js",
     "build-declaration": "rm -rf types && tsc",

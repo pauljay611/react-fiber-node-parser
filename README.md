@@ -1,43 +1,63 @@
-# React Fiber Node Parser
+# React Fiber Node Instance Parser
 
-> A react fiber node parser from DOM node to stateful component node
+> A react fiber node instance parser from DOM node to stateful component node
 
-## Memo
+## Who need react fiber node instance parser
 
-React Fiber 為雙向 linkedlist，非 DOM 為 Tree 結構，從 rootContainer 開始，結構可以參考
+1. Need to find out internal react fiber node from dom node
+2. Need to check fiber node in a clear and easier way without useless attributes
+3. Need to find out react component state and props
 
-https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactInternalTypes.js#L49
+## Environment
 
-幾個重要的屬性
+- Browser
+- Node.js
 
-- child: 子節點
-- sibling: 兄弟節點
-- stateNode: 指向 real DOM node
-- return: parent node
-- tag: 包含不同種類 Component，可以參考 https://github.com/facebook/react/blob/9ea4bc6ed607b0bbd2cff7bbdd4608db99490a5f/packages/shared/ReactWorkTags.js
+## Installation
 
-memoizedState & memoizedProps
+Browser
+`<script src="react-nip.js"></script>`
 
-memoizedProps 比較單純，它內容會有兩種物件
+```
+const reactNip =  window.$__react_nip
+```
 
-- 準備傳入的父層 props
-- 已經傳入的子層 props
-- List render，會用 Fragment 包住
+Node.js
 
-memoizedState 為單向 linkedlist，延續接著每個 state，可以參考 https://github.com/7kms/react-illustration-series/blob/v17.0.1/docs/algorithm/linkedlist.md
+- Npm
+  `npm install react-nip`
+- Yarn
+  `yarn add react-nip`
 
-- memoizedState: 當前的 state
-- next: 接下來的 state
-- baseState: 當前的 state
-- queue: 包含準備要更新的所有 state
+```
+// CommonJS
+const reactNip require('react-nip')
 
-為何不能將條件式擺在 useState() 前面: 會造成 state 錯位
+// ES6
+import reactNip from 'react-nip'
+```
 
-https://www.mdeditor.tw/pl/pAOm/zh-tw
-https://overreacted.io/zh-hans/why-do-hooks-rely-on-call-order/
+## API
 
-mountWorkInProgressHook => 負責連接所有 hook 包含 state
+### find react fiber node from native dom node
 
-queue 內會包 update 的 linkedList 假如 update1(prev=>prev+1) update2(prev=>prev+1) update3(prev=>prev+1)
-他會變成 => update1 -> update2 -> update3
-https://www.mdeditor.tw/pl/pXRJ/zh-tw
+```
+findReactInstanceByRoot( domNode:Element ): FiberNode
+```
+
+### parse react fiber node to object
+
+```
+fiberNodeParser( node:FiberNode ): SimplifiedFiberNode
+
+interface SimplifiedFiberNode {
+  type: WorkTag; // see https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactWorkTags.js
+  displayName: string;
+  children: SimplifiedFiberNode[];
+  state: any;
+  props: any;
+  index: number;
+  domNode: string;
+}
+
+```

@@ -6,10 +6,10 @@ import {
   getDomNodeByStateNode,
 } from "./utils";
 
-export function simplifyFiberNode(currentNode: Fiber): SimplifiedFiberNode {
+export function fiberNodeParser(currentNode: Fiber): SimplifiedFiberNode {
   const displayName = getDisplayNameByType(currentNode.type);
   const children = getAllChildrenBySiblings(currentNode.child).map((node) =>
-    simplifyFiberNode(node)
+    fiberNodeParser(node)
   );
   const state = getAllStateByMemoizedStateList(currentNode.memoizedState);
   const domNode = getDomNodeByStateNode(currentNode.stateNode);
@@ -26,4 +26,4 @@ export function simplifyFiberNode(currentNode: Fiber): SimplifiedFiberNode {
   return simplifiedNode;
 }
 
-export default simplifyFiberNode;
+export default fiberNodeParser;

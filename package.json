@@ -36,5 +36,10 @@
     "build": "webpack --config webpack.config.js",
     "demo": "yarn test && yarn build && cp index.js examples/demo-app/public && cd examples/demo-app && yarn start",
     "test": "jest"
-  }
+  },
+  "keywords": [
+    "react",
+    "fiber",
+    "javascript"
+  ]
 }

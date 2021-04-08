@@ -51,7 +51,8 @@ findReactInstanceByRoot( domNode:Element ): FiberNode
 fiberNodeParser( node:FiberNode ): SimplifiedFiberNode
 
 interface SimplifiedFiberNode {
-  type: WorkTag; // see https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactWorkTags.js
+  // see https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactWorkTags.js
+  type: WorkTag;
   displayName: string;
   children: SimplifiedFiberNode[];
   state: any;

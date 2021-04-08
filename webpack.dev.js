@@ -5,7 +5,7 @@ module.exports = {
 	entry: './src/index.ts',
 	output: {
 		path: path.resolve(__dirname),
-		filename: 'index.js'
+		filename: 'bundle.js'
 	},
 	devtool: 'inline-source-map',
 	module: {

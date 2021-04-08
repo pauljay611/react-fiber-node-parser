@@ -2,7 +2,8 @@
   "name": "react-nip",
   "version": "1.0.1",
   "description": "A react fiber node instance parser from DOM node to stateful component node",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "types/types.d.ts",
   "files": [
     "dist"
   ],
@@ -16,11 +17,12 @@
     "@typescript-eslint/parser": "^4.19.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "declaration-bundler-webpack-plugin": "^1.0.3",
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "jest": "^26.6.3",
-    "ts-loader": "^8.0.18",
+    "ts-loader": "^8.1.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3",
     "webpack": "^5.27.2",
@@ -37,14 +39,16 @@
     "dev": "webpack --config webpack.dev.js",
     "demo": "yarn test && yarn dev && cp index.js examples/demo-app/public && cd examples/demo-app && yarn start",
     "test": "jest",
-    "build": "webpack --config webpack.prod.js",
-    "publish": "yarn build && npm publish"
+    "build": "rm -rf dist && webpack --config webpack.prod.js",
+    "build-declaration": "rm -rf types && tsc",
+    "publish": "yarn build && yarn build-declaration && npm publish"
   },
   "license": "MIT",
   "author": "Paul Yang <pauljay611@gmail.com>",
   "keywords": [
     "react",
     "fiber",
-    "javascript"
+    "javascript",
+    "typescript"
   ]
 }

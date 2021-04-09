@@ -1,12 +1,11 @@
 {
   "name": "react-nip",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "A react fiber node instance parser from DOM node to stateful component node",
-  "main": "dist/index.js",
-  "types": "types/types.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/types.d.ts",
   "files": [
-    "dist/index.js",
-    "types/types.d.ts"
+    "dist"
   ],
   "devDependencies": {
     "@babel/preset-env": "^7.13.12",
@@ -41,11 +40,11 @@
     "demo": "yarn test && yarn dev && cp bundle.js examples/demo-app/public && cd examples/demo-app && yarn start",
     "test": "jest",
     "build": "rm -rf dist && webpack --config webpack.prod.js",
-    "build-declaration": "rm -rf types && tsc",
-    "publish": "yarn build && yarn build-declaration && npm publish"
+    "build-declaration": "rm -rf dist && tsc",
+    "publish": "yarn build-declaration && npm publish"
   },
   "license": "MIT",
-  "author": "Paul Yang <pauljay611@gmail.com>",
+  "author": "qwer8797 <pauljay611@gmail.com>",
   "keywords": [
     "react",
     "fiber",

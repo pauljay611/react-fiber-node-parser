@@ -1,9 +1,9 @@
 {
   "name": "react-nip",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A react fiber node instance parser from DOM node to stateful component node",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -38,7 +38,7 @@
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && tsc",
-    "publish": "yarn build && npm publish"
+    "publish": "yarn test && yarn build && npm publish"
   },
   "license": "MIT",
   "author": "qwer8797 <pauljay611@gmail.com>",

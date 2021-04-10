@@ -36,8 +36,6 @@
     "react-dom": "^17.0.2"
   },
   "scripts": {
-    "dev": "webpack --config webpack.config.js",
-    "demo": "yarn test && yarn dev && cp bundle.js examples/demo-app/public && cd examples/demo-app && yarn start",
     "test": "jest",
     "build": "rm -rf dist && tsc",
     "publish": "yarn build && npm publish"

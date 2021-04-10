@@ -12,6 +12,7 @@
 
 - Browser
 - Node.js
+- Support TypeScript
 
 ## Installation
 

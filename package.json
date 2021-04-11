@@ -1,6 +1,6 @@
 {
   "name": "react-nip",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A react fiber node instance parser from DOM node to stateful component node",
   "repository": {
     "type": "git",

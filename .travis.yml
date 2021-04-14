@@ -5,19 +5,19 @@ before_install:
   - npm install -g yarn --cache-min 999999999
 install:
   - yarn
-script:
-  - echo 'run tests'
-  - yarn test
-  - echo 'start build'
-  - yarn build
 jobs:
   include:
     # Define the release stage that runs semantic-release
     - stage: release
       node_js: lts/*
       # Advanced: optionally overwrite your default `script` step to skip the tests
-      # script: skip
+      script:
+        - echo 'run tests'
+        - yarn test
+        - echo 'start build'
+        - yarn build
       deploy:
         provider: script
+        skip_cleanup: true
         script:
           - npx semantic-release

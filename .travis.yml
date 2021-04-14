@@ -20,4 +20,4 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - yarn global add @semantic-release/changelog @semantic-release/git semantic-release && semantic-release
+          - npx semantic-release

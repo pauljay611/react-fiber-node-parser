@@ -8,6 +8,5 @@ declare global {
 }
 window.$__react_nip = { findReactInstanceByRoot, fiberNodeParser };
 
-export * from "./findReactInstanceByRoot";
-export * from "./fiberNodeParser";
+export default { findReactInstanceByRoot, fiberNodeParser };
 export * from "./types";
